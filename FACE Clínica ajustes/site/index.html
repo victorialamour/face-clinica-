@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Protótipo autossuficiente da FACE Clínica — gerado em 09/09/2026
+     20 imagens embutidas · vídeo: substituído pelo poster
+     Fonte editável: site/index.html + assets/ -->
+<title>FACE Clínica — Excelência em sorrisos e estética facial | Arcoverde/PE</title>
+<meta name="description" content="Odontologia estética, harmonização facial e ortodontia em Arcoverde, Pernambuco. Protocolo único, construído a partir da sua individualidade.">
+<meta name="theme-color" content="#FBF9F5">
+
+<meta property="og:title" content="FACE Clínica — Excelência em sorrisos e estética facial">
+<meta property="og:description" content="Odontologia estética, harmonização facial e ortodontia em Arcoverde, Pernambuco.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/hero-clinica.jpg">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   FACE CLÍNICA — Design System
+   Base creme/areia · texto preto e grafite · dourado discreto só em traços finos.
+   Movimento e ritmo editorial inspirados na referência LUMI (Behance).
+   ========================================================================== */
+
+:root{
+  /* ---- Cor ---- */
+  --ink:#1F1E1C;          /* títulos                              */
+  --graphite:#3A3936;     /* texto forte                          */
+  --body:#4A4844;         /* parágrafos                           */
+  --muted:#6A6862;        /* apoio, legendas (5,3:1 no creme)     */
+
+  --gold:#B08D57;         /* DECORATIVO — só filete e ornamento   */
+  --gold-deep:#8A6B3A;    /* dourado em texto e borda (4,7:1)     */
+
+  --hair:#DED5C6;         /* divisor decorativo                   */
+  --sand:#F2EDE5;         /* superfície quente                    */
+  --cream:#FBF9F5;        /* fundo padrão                         */
+  --paper:#FFFFFF;
+
+  --dark:#1F1E1C;         /* seções escuras                       */
+  --on-dark:#F5F2EC;
+  --on-dark-soft:#D9D4CA;
+
+  /* ---- Tipografia ---- */
+  /* A marca é uma geométrica fina de tracking largo. O display segue essa letra
+     (Jost); o corpo usa uma grotesca neutra e legível (Hanken Grotesk). */
+  --f-display:"Jost", "Futura", Avenir, "Helvetica Neue", sans-serif;
+  --f-body:"Hanken Grotesk", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --t-display:clamp(2.5rem, 5.8vw, 5.2rem);
+  --t-h2:clamp(1.9rem, 3.8vw, 3.3rem);
+  --t-h3:clamp(1.5rem, 2.4vw, 2.1rem);
+  --t-lead:clamp(1.35rem, 2.6vw, 2.3rem);
+  --t-body:clamp(1rem, 1.05vw, 1.075rem);
+  --t-small:0.875rem;
+  --t-micro:0.72rem;
+
+  /* ---- Ritmo (espaçoso) ---- */
+  --s-1:.5rem;  --s-2:1rem;   --s-3:1.5rem;  --s-4:2rem;
+  --s-5:3rem;   --s-6:4rem;   --s-7:6rem;
+  --sec-y:clamp(5.5rem, 11vw, 11rem);
+  --gut:clamp(1.25rem, 4vw, 4.5rem);
+  --wrap:1440px;
+
+  /* ---- Forma ---- */
+  --r-sm:4px; --r-md:10px; --r-pill:999px;
+
+  /* ---- Escala de imagem ----------------------------------------------
+     Três degraus, e só um bloco por página pode usar o primeiro. Sem isso
+     cada seção compete com a anterior e nada tem hierarquia.
+     ------------------------------------------------------------------- */
+  --img-hero:min(80svh, 760px);   /* 1 · só o hero                        */
+  --img-faixa:clamp(400px, 52vh, 560px); /* 2 · faixas full-bleed         */
+  --img-col-alta:400px;           /* 3 · retrato em coluna (4:5)          */
+  --img-col-larga:540px;          /* 3 · paisagem em coluna (4:3)         */
+
+  /* ---- Motion ---- */
+  --e-out:cubic-bezier(.16,1,.3,1);
+  --e-in:cubic-bezier(.7,0,.84,0);
+  --e-soft:cubic-bezier(.4,0,.2,1);
+  --d-micro:.22s; --d-ui:.42s;
+  --z-nav:100; --z-menu:200; --z-wa:300; --z-cursor:900; --z-pre:1000;
+}
+
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,h4,p,figure,blockquote,ol,ul,dl,address{margin:0}
+ul[class]{list-style:none;padding:0}
+img,video,iframe{display:block;max-width:100%}
+img,video{height:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+address{font-style:normal}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  font-family:var(--f-body);
+  font-size:var(--t-body);
+  line-height:1.7;
+  color:var(--body);
+  background:var(--cream);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.is-loading,body.menu-open{overflow:hidden}
+
+::selection{background:var(--gold-deep);color:#fff}
+
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:2px solid var(--gold-deep);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.skip-link{
+  position:absolute;left:var(--gut);top:-100px;z-index:calc(var(--z-pre) + 10);
+  background:var(--ink);color:var(--cream);padding:.75rem 1.25rem;border-radius:var(--r-pill);
+  transition:top var(--d-ui) var(--e-out);
+}
+.skip-link:focus{top:1rem}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+section[id]{scroll-margin-top:92px}
+[hidden]{display:none !important}
+
+/* ==========================================================================
+   WORDMARK
+   Serifada fina com tracking largo + "Clínica" em caixa-alta pequena abaixo.
+   ========================================================================== */
+/* PROVISÓRIO: o logo real é um letreiro geométrico desenhado, com cortes nas
+   hastes do F, A e E. Nenhuma fonte reproduz isso — Jost 300 só aproxima a
+   família certa. Substituir por SVG/PNG assim que o arquivo original chegar. */
+.logo{
+  display:block;width:auto;height:22px;aspect-ratio:1083/369;
+  background:currentColor;
+  -webkit-mask:url("assets/img/logo-face.png") center/contain no-repeat;
+  mask:url("assets/img/logo-face.png") center/contain no-repeat;
+}
+.logo--lg{height:34px}
+.logo--hero{height:clamp(34px,4.4vw,54px)}
+.foot__brand .logo{height:30px}
+
+/* ==========================================================================
+   TIPOGRAFIA
+   ========================================================================== */
+.h2{
+  font-family:var(--f-display);font-weight:300;
+  font-size:var(--t-h2);line-height:1.12;letter-spacing:.01em;
+  color:var(--ink);text-wrap:balance;
+}
+.h2 em{font-style:normal;font-weight:400;color:var(--gold-deep)}
+.h2--center{text-align:center}
+.h2--light{color:var(--on-dark)}
+.h2--light em{color:#D9B47C}   /* dourado clareado p/ contraste sobre escuro */
+
+.eyebrow{
+  font-size:var(--t-micro);letter-spacing:.26em;text-transform:uppercase;
+  font-weight:600;color:var(--gold-deep);margin-bottom:var(--s-3);
+}
+.eyebrow--light{color:#E3C79B}
+.eyebrow--center{text-align:center}
+
+/* filete dourado fino — o único uso decorativo do dourado claro */
+.hair{display:inline-block;width:22px;height:1px;background:var(--gold);flex:none}
+
+.sec-head{padding-bottom:var(--s-5)}
+.sec-head--center{text-align:center}
+
+/* ==========================================================================
+   BOTÕES
+   O CTA principal é preenchido: o limite do componente é o fundo, não um
+   filete claro — assim passa em contraste sem engrossar a linha.
+   ========================================================================== */
+.btn{
+  --btn-bg:transparent; --btn-fg:var(--ink); --btn-bd:var(--gold-deep);
+  position:relative;display:inline-flex;align-items:center;gap:.85rem;
+  min-height:54px;padding:.95rem 1.7rem;
+  border:1px solid var(--btn-bd);border-radius:var(--r-pill);
+  background:var(--btn-bg);color:var(--btn-fg);
+  font-size:var(--t-small);font-weight:500;letter-spacing:.06em;line-height:1;
+  overflow:hidden;isolation:isolate;
+  transition:color var(--d-ui) var(--e-soft),border-color var(--d-ui) var(--e-soft);
+  touch-action:manipulation;
+}
+.btn::before{
+  content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:var(--ink);transform:translateY(101%);
+  transition:transform .55s var(--e-out);
+}
+.btn>span{position:relative}
+.btn__arrow{
+  display:grid;place-items:center;width:30px;height:30px;flex:none;
+  border-radius:50%;border:1px solid currentColor;opacity:.55;
+  transition:transform var(--d-ui) var(--e-out),opacity var(--d-ui) var(--e-soft);
+}
+.btn__arrow svg{width:15px;height:15px}
+.btn:hover{color:var(--cream);border-color:var(--ink)}
+.btn:hover::before{transform:translateY(0)}
+.btn:hover .btn__arrow{transform:translateX(4px);opacity:1}
+.btn:active{transform:scale(.98)}
+
+.btn--solid{--btn-bg:var(--ink);--btn-fg:var(--cream);--btn-bd:var(--ink)}
+.btn--solid::before{background:var(--gold-deep)}
+.btn--solid:hover{color:#fff;border-color:var(--gold-deep)}
+.btn--ghost{--btn-bd:transparent;padding-inline:.5rem}
+.btn--ghost::before{display:none}
+.btn--ghost>span{box-shadow:inset 0 -1px 0 var(--gold);padding-bottom:3px}
+.btn--ghost:hover{color:var(--gold-deep);border-color:transparent}
+.btn--light{--btn-bg:var(--on-dark);--btn-fg:var(--ink);--btn-bd:var(--on-dark)}
+.btn--light::before{background:var(--gold-deep)}
+.btn--light:hover{color:#fff;border-color:var(--gold-deep)}
+.btn--pill{padding:.85rem .95rem .85rem 1.6rem}
+.btn--big{min-height:64px;padding:1.1rem 1.3rem 1.1rem 2.2rem;font-size:.95rem}
+
+/* ==========================================================================
+   PRELOADER · CURSOR
+   ========================================================================== */
+.preloader{position:fixed;inset:0;z-index:var(--z-pre);display:grid;place-items:center;background:var(--cream)}
+.preloader__inner{display:grid;justify-items:center;gap:2rem;color:var(--ink)}
+.preloader__bar{display:block;width:min(220px,48vw);height:1px;background:var(--hair);overflow:hidden}
+.preloader__bar i{display:block;height:100%;width:0;background:var(--gold-deep)}
+.preloader__curtain{position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom}
+
+.cursor{position:fixed;top:0;left:0;z-index:var(--z-cursor);pointer-events:none;opacity:0;mix-blend-mode:difference}
+.cursor__dot{position:absolute;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff}
+.cursor__ring{
+  position:absolute;display:grid;place-items:center;width:36px;height:36px;margin:-18px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.7);
+  transition:width var(--d-ui) var(--e-out),height var(--d-ui) var(--e-out),margin var(--d-ui) var(--e-out),background-color var(--d-ui) var(--e-soft);
+}
+.cursor__label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity var(--d-micro)}
+.cursor.is-hover .cursor__ring{width:62px;height:62px;margin:-31px;background:rgba(255,255,255,.14)}
+.cursor.is-label .cursor__ring{width:80px;height:80px;margin:-40px;background:rgba(255,255,255,.18)}
+.cursor.is-label .cursor__label{opacity:1}
+@media (hover:none),(pointer:coarse){.cursor{display:none}}
+
+/* ==========================================================================
+   NAV
+   ========================================================================== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);color:#fff;
+  transition:transform .5s var(--e-out),background-color var(--d-ui) var(--e-soft),box-shadow var(--d-ui) var(--e-soft),color var(--d-ui) var(--e-soft);
+}
+.nav.is-stuck{background:rgba(251,249,245,.9);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(31,30,28,.08);color:var(--ink)}
+.nav.is-hidden{transform:translateY(-100%)}
+.nav__inner{max-width:var(--wrap);margin-inline:auto;padding:1.05rem var(--gut);display:flex;align-items:center;gap:var(--s-4)}
+.nav__brand{margin-right:auto}
+
+.nav__links{display:flex;gap:clamp(1rem,2.2vw,2.2rem)}
+.nav__links a{position:relative;font-size:var(--t-small);padding:.4rem 0;opacity:.92;transition:opacity var(--d-ui) var(--e-soft)}
+.nav__links a span{position:relative;display:inline-block;overflow:hidden}
+.nav__links a span::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;
+  transform:translateX(-101%);transition:transform .45s var(--e-out);
+}
+.nav__links a:hover{opacity:1}
+.nav__links a:hover span::after{transform:translateX(0)}
+
+.nav__cta{--btn-fg:#fff;--btn-bd:rgba(255,255,255,.55);min-height:46px}
+.nav__cta::before{background:#fff}
+.nav__cta:hover{color:var(--ink);border-color:#fff}
+.nav.is-stuck .nav__cta{--btn-fg:var(--cream);--btn-bg:var(--ink);--btn-bd:var(--ink)}
+.nav.is-stuck .nav__cta::before{background:var(--gold-deep)}
+.nav.is-stuck .nav__cta:hover{color:#fff;border-color:var(--gold-deep)}
+
+.nav__burger{display:none;width:48px;height:48px;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.nav__burger span{display:block;width:22px;height:1.5px;background:currentColor;transition:transform var(--d-ui) var(--e-out)}
+body.menu-open .nav__burger{color:var(--on-dark)}
+body.menu-open .nav__burger span:first-child{transform:translateY(3.75px) rotate(45deg)}
+body.menu-open .nav__burger span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+
+@media (max-width:1100px){
+  .nav__links,.nav__cta{display:none}
+  .nav__burger{display:flex}
+}
+
+.menu{
+  position:fixed;inset:0;z-index:var(--z-menu);background:var(--dark);color:var(--on-dark);
+  display:flex;flex-direction:column;justify-content:center;gap:var(--s-6);
+  padding:6rem var(--gut) 3rem;clip-path:inset(0 0 100% 0);
+}
+.menu[hidden]{display:none}
+.menu__nav{display:grid;gap:.2rem}
+.menu__nav a{
+  font-family:var(--f-display);font-weight:300;letter-spacing:.01em;font-size:clamp(1.9rem,7.5vw,3rem);
+  line-height:1.15;display:flex;align-items:baseline;gap:1rem;padding:.3rem 0;
+}
+.menu__nav a em{font-family:var(--f-body);font-size:.68rem;font-style:normal;letter-spacing:.24em;color:#D9B47C}
+.menu__foot{display:grid;gap:.6rem;font-size:var(--t-small);color:var(--on-dark-soft);border-top:1px solid rgba(255,255,255,.16);padding-top:var(--s-3)}
+.menu__foot a{display:inline-flex;align-items:center;min-height:32px}
+
+/* ==========================================================================
+   WHATSAPP FLUTUANTE
+   ========================================================================== */
+.wa{
+  position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:var(--z-wa);
+  display:inline-flex;align-items:center;gap:0;
+  height:60px;min-width:60px;padding:0 18px;border-radius:var(--r-pill);
+  background:var(--ink);color:var(--cream);
+  box-shadow:0 6px 28px rgba(31,30,28,.26);
+  transition:gap var(--d-ui) var(--e-out),background-color var(--d-ui) var(--e-soft),
+             transform .5s var(--e-out),opacity .35s var(--e-soft);
+}
+.wa svg{width:26px;height:26px;flex:none}
+.wa__label{
+  max-width:0;overflow:hidden;white-space:nowrap;opacity:0;
+  font-size:.82rem;letter-spacing:.04em;
+  transition:max-width .5s var(--e-out),opacity .35s var(--e-soft);
+}
+.wa:hover,.wa:focus-visible{background:var(--gold-deep);gap:.7rem;transform:translateY(-2px)}
+.wa:hover .wa__label,.wa:focus-visible .wa__label{max-width:220px;opacity:1}
+/* escondido só enquanto o hero está na tela — o hero já tem o seu próprio CTA.
+   Sem JS a classe nunca é aplicada e o botão fica visível: o fallback é o
+   estado seguro. */
+.wa.is-off{opacity:0;transform:translateY(24px) scale(.9);pointer-events:none}
+@media (max-width:640px){.wa{height:56px;min-width:56px;padding:0 15px}}
+
+/* ==========================================================================
+   01 · HERO
+   ========================================================================== */
+/* 80svh e não 100: deixa a próxima seção espiar na dobra, o que convida a
+   rolar — e tira do hero o peso de ser a tela inteira. */
+.hero{position:relative;min-height:min(94svh,960px);display:grid;place-items:center;overflow:hidden;color:#fff}
+.hero__media{position:absolute;inset:-11% 0;z-index:0}
+.hero__video{width:100%;height:100%;object-fit:cover;background:var(--graphite)}
+/* Scrim calibrado para o pior caso (foto clara): o bloco de texto inferior
+   mantém ≥4,5:1 mesmo sobre branco. Com foto escura dá para aliviar 60%/100%. */
+.hero__scrim{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 50% 46%, rgba(20,19,17,.34) 0%, rgba(20,19,17,.58) 62%, rgba(20,19,17,.72) 100%),
+    linear-gradient(180deg, rgba(20,19,17,.5) 0%, rgba(20,19,17,0) 26%, rgba(20,19,17,0) 62%, rgba(20,19,17,.6) 100%);
+}
+.hero__grain{
+  position:absolute;inset:0;opacity:.3;pointer-events:none;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.hero__content{
+  position:relative;z-index:1;display:grid;justify-items:center;text-align:center;
+  width:100%;max-width:var(--wrap);margin-inline:auto;
+  padding:clamp(4rem,9vh,6rem) var(--gut);
+}
+.hero__rule{
+  display:block;width:1px;height:clamp(1.75rem,4vh,3rem);
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0));
+  margin-block:clamp(1.1rem,2.4vh,1.6rem);
+}
+.hero__title{
+  font-family:var(--f-display);font-weight:300;
+  font-size:clamp(1.7rem,3.2vw,2.9rem);line-height:1.2;letter-spacing:.015em;font-weight:200;
+  text-wrap:balance;
+}
+.hero__title em{font-style:normal;font-weight:400}
+.hero__sub{
+  margin-top:clamp(.9rem,2vh,1.35rem);max-width:42ch;
+  font-size:clamp(.85rem,.95vw,.95rem);line-height:1.65;color:rgba(255,255,255,.92);
+}
+.hero__actions{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s-2);
+  margin-top:clamp(1.9rem,4vh,2.9rem);
+}
+.hero__actions .btn span{white-space:nowrap}
+.hero__actions .btn--solid{--btn-bg:transparent;--btn-fg:#fff;--btn-bd:rgba(255,255,255,.55)}
+.hero__actions .btn--solid::before{background:#fff}
+.hero__actions .btn--solid:hover{color:var(--ink);border-color:#fff}
+
+.hero__scroll{
+  position:absolute;left:50%;translate:-50% 0;bottom:clamp(1.75rem,4vh,2.75rem);z-index:2;
+  display:grid;justify-items:center;gap:.6rem;
+  font-size:var(--t-micro);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.9);
+}
+.hero__scroll-line{display:block;width:1px;height:52px;background:rgba(255,255,255,.3);overflow:hidden}
+.hero__scroll-line i{display:block;width:100%;height:40%;background:#fff;animation:scrollCue 2.1s var(--e-soft) infinite}
+@keyframes scrollCue{0%{transform:translateY(-100%)}55%,100%{transform:translateY(250%)}}
+@media (max-height:760px),(max-width:820px){
+  .hero__scroll{display:none}
+}
+@media (max-width:640px){
+  .hero__specs{display:grid;gap:.5rem}
+  .hero__specs li + li::before{display:none}
+  .hero__specs li{gap:0}
+}
+
+/* ==========================================================================
+   02 · MARQUEE
+   ========================================================================== */
+.marquee{background:var(--sand);border-block:1px solid var(--hair);padding:1.15rem 0;overflow:hidden}
+.marquee__track{display:flex;width:max-content;animation:slide 38s linear infinite}
+.marquee:hover .marquee__track,.marquee:focus-within .marquee__track{animation-play-state:paused}
+.marquee__set{display:flex;align-items:center;gap:2.6rem;padding-right:2.6rem}
+.marquee__set span{
+  font-family:var(--f-display);font-size:1.02rem;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--graphite);white-space:nowrap;
+}
+/* losango dourado desenhado em CSS — sem dingbat, sem emoji */
+.marquee__set i{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex:none}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ==========================================================================
+   03 · A FACE
+   ========================================================================== */
+.about{background:var(--cream);padding-block:var(--sec-y)}
+.manifesto__text{
+  font-family:var(--f-display);font-weight:200;font-size:var(--t-lead);
+  line-height:1.35;letter-spacing:.012em;color:var(--ink);text-align:center;
+  max-width:26ch;margin:0 auto clamp(4rem,9vw,8rem);text-wrap:balance;
+}
+.manifesto__text em{font-style:normal;font-weight:400;color:var(--gold-deep)}
+
+.about__grid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:center}
+.about__media{position:relative;overflow:hidden;border-radius:var(--r-md);aspect-ratio:4/5;
+  width:100%;max-width:var(--img-col-alta);justify-self:center}
+.about__media img{width:100%;height:122%;object-fit:cover;margin-top:-11%}
+.about__body{max-width:56ch}
+.about__copy{margin-top:var(--s-3);display:grid;gap:var(--s-2)}
+
+.pillars{margin-top:var(--s-5);display:grid}
+.pillars li{
+  display:flex;align-items:baseline;gap:clamp(1rem,2vw,1.75rem);
+  padding-block:clamp(.85rem,1.6vw,1.15rem);border-top:1px solid var(--hair);
+  font-family:var(--f-display);font-weight:300;letter-spacing:.012em;
+  font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.3;color:var(--ink);
+}
+.pillars li:last-child{border-bottom:1px solid var(--hair)}
+.pillars em{
+  font-family:var(--f-body);font-style:normal;font-size:var(--t-micro);font-weight:500;
+  letter-spacing:.18em;color:var(--gold-deep);
+}
+
+@media (max-width:900px){.about__grid{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   04 · PROFISSIONAIS
+   ========================================================================== */
+.team{background:var(--paper);padding-block:var(--sec-y)}
+.team__grid{display:grid;gap:clamp(3.5rem,8vw,7rem)}
+.doc{display:grid;grid-template-columns:minmax(0,.52fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.doc--reverse .doc__photo{order:2}
+.doc__photo{overflow:hidden;border-radius:var(--r-md);aspect-ratio:4/5;background:var(--sand);
+  width:100%;max-width:380px;justify-self:center}
+.doc__photo img{width:100%;height:100%;object-fit:cover;transition:scale .9s var(--e-out)}
+.doc:hover .doc__photo img{scale:1.03}
+.doc__body{max-width:54ch}
+.doc__name{font-family:var(--f-display);font-weight:300;letter-spacing:.01em;font-size:var(--t-h3);line-height:1.1;color:var(--ink)}
+.doc__role{
+  margin-top:.7rem;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+  line-height:1.9;color:var(--gold-deep);
+}
+.doc__bio{margin-top:var(--s-3);font-size:1.02rem}
+.doc__note{
+  margin-top:var(--s-3);padding-top:var(--s-3);border-top:1px solid var(--hair);
+  font-size:.88rem;color:var(--muted);
+}
+@media (max-width:900px){
+  .doc{grid-template-columns:1fr}
+  .doc--reverse .doc__photo{order:0}
+}
+
+/* ==========================================================================
+   05 · ESPECIALIDADES
+   ========================================================================== */
+.spec{background:var(--cream);padding-block:var(--sec-y)}
+.spec__row{
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);
+  gap:clamp(2rem,5vw,5rem);align-items:center;
+  max-width:var(--wrap);margin:0 auto;padding:clamp(2rem,5vw,4.5rem) var(--gut);
+}
+.spec__row--reverse .spec__media{order:2}
+/* paisagem aqui, retrato nos profissionais: mesma escala, formas diferentes —
+   é o que evita as sete faixas alternadas virarem uma coisa só */
+.spec__media{overflow:hidden;border-radius:var(--r-md);aspect-ratio:4/3;background:var(--sand);
+  width:100%;max-width:var(--img-col-larga);justify-self:center}
+.spec__media img,.spec__media video{width:100%;height:122%;object-fit:cover;margin-top:-11%}
+.spec__media img.spec__img--low{height:100%;margin-top:0;object-position:50% 92%}
+.spec__media--tall{aspect-ratio:4/5;max-width:var(--img-col-alta)}
+.spec__body{max-width:52ch}
+.spec__n{
+  display:block;font-family:var(--f-body);font-weight:500;font-size:.78rem;letter-spacing:.22em;
+  color:var(--gold-deep);margin-bottom:var(--s-2);
+}
+.spec__title{
+  font-family:var(--f-display);font-weight:300;font-size:var(--t-h3);
+  line-height:1.16;letter-spacing:.012em;color:var(--ink);text-wrap:balance;
+}
+.spec__title em{font-style:normal;font-weight:400;color:var(--gold-deep)}
+.spec__lead{margin-top:var(--s-3)}
+.spec__list{margin-top:var(--s-3);display:grid;gap:.65rem}
+.spec__list li{
+  display:flex;align-items:baseline;gap:.85rem;font-size:.94rem;color:var(--graphite);
+}
+.spec__list li::before{content:"";width:16px;height:1px;background:var(--gold);flex:none;transform:translateY(-4px)}
+@media (max-width:900px){
+  .spec__row{grid-template-columns:1fr}
+  .spec__row--reverse .spec__media{order:0}
+}
+
+/* ==========================================================================
+   06 · TECNOLOGIA
+   ========================================================================== */
+.tech{position:relative;display:grid;place-items:center;min-height:var(--img-faixa);overflow:hidden;isolation:isolate;color:var(--on-dark)}
+.tech__media{position:absolute;inset:-13% 0;z-index:-1}
+.tech__media img,.tech__media video{width:100%;height:100%;object-fit:cover;background:var(--graphite)}
+.tech__scrim{position:absolute;inset:0;background:rgba(20,19,17,.74)}
+/* respiro próprio, menor que o --sec-y das seções claras: dentro de uma faixa
+   escura full-bleed o fundo já cria a pausa, o padding não precisa repeti-la */
+.tech__body{max-width:60ch;padding:clamp(3rem,6vw,5rem) var(--gut);text-align:center;display:grid;justify-items:center}
+.tech__lead{margin-top:var(--s-4);color:var(--on-dark-soft);font-size:1.02rem}
+.tech__list{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:var(--s-4)}
+.tech__list li{
+  border:1px solid rgba(255,255,255,.42);border-radius:var(--r-pill);
+  padding:.55rem 1.15rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--on-dark);
+}
+
+/* ==========================================================================
+   07 · PROVA (números + depoimentos)
+   ========================================================================== */
+.proof{background:var(--paper);padding-block:var(--sec-y)}
+.proof__facts{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border-block:1px solid var(--hair);margin-bottom:clamp(3rem,6vw,5rem);
+}
+.proof__fact{padding:clamp(1.5rem,3vw,2.25rem) 0;display:grid;gap:.4rem;text-align:center}
+.proof__fact + .proof__fact{border-left:1px solid var(--hair)}
+.proof__num{font-family:var(--f-display);font-weight:200;font-size:clamp(2rem,4vw,3rem);line-height:1;color:var(--ink)}
+.proof__lab{font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.proof__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem)}
+.quote{
+  display:grid;gap:var(--s-3);padding:clamp(1.75rem,3vw,2.5rem);
+  background:var(--cream);border-radius:var(--r-md);border:1px solid var(--hair);
+}
+.quote__mark{font-family:var(--f-display);font-weight:300;font-size:2.2rem;line-height:.6;color:var(--gold-deep)}
+.quote__text{font-family:var(--f-body);font-weight:300;font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.7;color:var(--ink)}
+.quote__who{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.proof__src{margin-top:var(--s-4);font-size:.85rem;color:var(--muted)}
+.proof__src a{color:var(--gold-deep)}
+@media (max-width:820px){
+  .proof__grid{grid-template-columns:1fr}
+  .proof__facts{grid-template-columns:1fr}
+  .proof__fact + .proof__fact{border-left:0;border-top:1px solid var(--hair)}
+}
+
+/* ==========================================================================
+   08 · PERGUNTAS FREQUENTES
+   ========================================================================== */
+.faq{background:var(--sand);padding-block:var(--sec-y)}
+.faq__list{display:grid;margin-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--hair)}
+.faq__item{border-bottom:1px solid var(--hair)}
+.faq__q{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);
+  padding:clamp(1.1rem,2.2vw,1.6rem) 0;cursor:pointer;list-style:none;
+  font-family:var(--f-display);font-weight:400;font-size:clamp(1rem,1.3vw,1.15rem);letter-spacing:.01em;color:var(--ink);
+}
+.faq__q::-webkit-details-marker{display:none}
+.faq__q i{
+  position:relative;flex:none;width:14px;height:14px;transition:transform .35s ease;
+}
+.faq__q i::before,.faq__q i::after{
+  content:"";position:absolute;background:var(--gold-deep);
+}
+.faq__q i::before{inset:6px 0 auto 0;height:1px}
+.faq__q i::after{inset:0 6px 0 auto;width:1px;transition:opacity .3s ease}
+.faq__item[open] .faq__q i{transform:rotate(90deg)}
+.faq__item[open] .faq__q i::after{opacity:0}
+.faq__a{padding:0 0 clamp(1.1rem,2.2vw,1.6rem);max-width:70ch;color:var(--graphite);line-height:1.8}
+.faq__a p + p{margin-top:.8rem}
+
+/* ==========================================================================
+   09 · LOCALIZAÇÃO
+   ========================================================================== */
+.loc{background:var(--cream);padding-top:var(--sec-y)}
+.loc__grid{display:grid;gap:clamp(2rem,5vw,5rem);align-items:center;padding-bottom:var(--sec-y)}
+.loc__addr{margin-top:var(--s-4);font-size:1.05rem;line-height:1.9;color:var(--graphite)}
+.loc__ref{color:var(--muted);font-size:.92rem}
+.loc__lead{margin-top:var(--s-3);max-width:52ch;color:var(--graphite);line-height:1.8}
+.loc__hours{margin-top:var(--s-4);display:grid;gap:.55rem;max-width:34rem}
+.loc__hours > div{display:flex;justify-content:space-between;gap:var(--s-3);
+  padding-bottom:.55rem;border-bottom:1px solid var(--hair)}
+.loc__hours dt{font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.loc__hours dd{color:var(--ink);font-size:.98rem}
+.loc__actions{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-4)}
+.loc__media{overflow:hidden;border-radius:var(--r-md);aspect-ratio:4/5;background:var(--sand);
+  width:100%;max-width:var(--img-col-alta);justify-self:center}
+.loc__media img,.loc__media video{width:100%;height:100%;object-fit:cover}
+.loc__map{height:clamp(280px,38vh,400px);background:var(--sand)}
+.loc__map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(.94)}
+@media (max-width:900px){.loc__grid{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   10 · AGENDAMENTO
+   ========================================================================== */
+.cta{position:relative;display:grid;place-items:center;min-height:var(--img-faixa);
+  background:var(--ink);overflow:hidden;isolation:isolate;color:var(--on-dark)}
+.cta__body{display:grid;justify-items:center;gap:var(--s-4);padding:clamp(3rem,6vw,5rem) var(--gut);text-align:center}
+.cta__ig{font-size:.86rem;letter-spacing:.16em;color:var(--on-dark-soft);border-bottom:1px solid var(--gold);padding-bottom:3px}
+.cta__ig:hover{color:#fff}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.foot{background:var(--dark);color:var(--on-dark-soft);padding-top:var(--s-6);overflow:hidden}
+.foot__top{
+  display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));
+  gap:var(--s-5) clamp(1.5rem,4vw,4rem);padding-bottom:var(--s-6);
+}
+.foot__brand{color:var(--on-dark)}
+.foot__col h3{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  color:#E3C79B;margin-bottom:.8rem;
+}
+.foot__col p{font-size:.9rem;line-height:1.8;color:var(--on-dark)}
+.foot__col a{display:inline-flex;align-items:center;min-height:26px;border-bottom:1px solid transparent}
+.foot__col a:hover{border-bottom-color:var(--gold)}
+.foot__bottom{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2) var(--s-4);
+  padding-block:var(--s-4);border-top:1px solid rgba(255,255,255,.16);
+}
+.foot__rt{margin-top:.9rem;font-size:.8rem;color:var(--on-dark-soft)}
+.foot__legal{font-size:.78rem;line-height:1.7;max-width:62ch;color:var(--on-dark-soft)}
+.foot__giant{
+  display:block;width:min(100%,calc(100vw - var(--gut)*2));margin:0 auto;
+  aspect-ratio:1083/245;background:var(--on-dark);opacity:.07;
+  -webkit-mask:url("assets/img/logo-face-only.png") center/contain no-repeat;
+  mask:url("assets/img/logo-face-only.png") center/contain no-repeat;
+}
+@media (max-width:900px){.foot__top{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.foot__top{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   MOTION — estados iniciais (só com .js-anim no <html>)
+   ========================================================================== */
+.js-anim [data-reveal],
+.js-anim [data-reveal-stagger] > *{opacity:0;transform:translateY(26px)}
+.js-anim [data-reveal-img]{clip-path:inset(0 0 100% 0)}
+
+/* Máscara por palavra. O padding + margem negativa evita cortar descendentes
+   e as hastes que extrapolam a caixa da palavra. */
+.js-anim .split__line{
+  display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding:0 .06em .16em;margin:0 -.06em -.16em;
+}
+.js-anim .split__inner{display:inline-block;transform:translateY(110%)}
+.js-anim .tech__media,
+.js-anim .about__media img,.js-anim .spec__media img,.js-anim .hero__media{will-change:transform}
+
+@media (prefers-reduced-motion:reduce){
+  .js-anim [data-reveal],
+  .js-anim [data-reveal-stagger] > *{opacity:1 !important;transform:none !important}
+  .js-anim [data-reveal-img]{clip-path:none !important}
+  .js-anim .split__inner{transform:none !important}
+  .marquee__track{animation:none}
+  .hero__scroll-line i{animation:none;height:100%;opacity:.5}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+@media print{
+  .nav,.cursor,.preloader,.hero__scroll,.marquee,.wa,.foot__giant,.loc__map{display:none !important}
+  body{background:#fff;color:#000}
+}
+
+</style>
+<script>
+  /* Estados iniciais de animação só entram se houver JS e o usuário aceitar movimento.
+     Inline no <head> para não haver "flash" de conteúdo antes do CSS aplicar. */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('js-anim');
+    /* Rede de segurança: se o main.js ou o CDN do GSAP não responderem, os
+       estados iniciais (opacity:0) são removidos e o conteúdo aparece inteiro. */
+    setTimeout(function () {
+      if (!window.__fcReady) document.documentElement.classList.remove('js-anim');
+    }, 4000);
+  }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "FACE Clínica",
+  "description": "Odontologia estética, harmonização facial, ortodontia e reabilitação oral.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Maria José dos Santos Moreno, 17 — Centro",
+    "addressLocality": "Arcoverde",
+    "addressRegion": "PE",
+    "postalCode": "56505-025",
+    "addressCountry": "BR"
+  },
+  "sameAs": ["https://instagram.com/faceclinicaa"],
+  "medicalSpecialty": ["Dentistry", "CosmeticDentistry"]
+}
+</script>
+</head>
+
+<body class="is-loading">
+
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+<!-- ═══════════════ PRELOADER ═══════════════ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <span class="logo logo--lg" role="img" aria-label="FACE Clínica"></span>
+    <span class="preloader__bar"><i></i></span>
+  </div>
+  <div class="preloader__curtain"></div>
+</div>
+
+<!-- ═══════════════ CURSOR (desktop) ═══════════════ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__dot"></span>
+  <span class="cursor__ring"><span class="cursor__label"></span></span>
+</div>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#hero" aria-label="FACE Clínica — início">
+      <span class="logo" role="img" aria-label="FACE Clínica"></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navegação principal">
+      <a href="#a-face"><span>A FACE</span></a>
+      <a href="#profissionais"><span>Profissionais</span></a>
+      <a href="#especialidades"><span>Especialidades</span></a>
+      <a href="#duvidas"><span>Dúvidas</span></a>
+      <a href="#localizacao"><span>Localização</span></a>
+    </nav>
+
+    <a class="btn btn--pill nav__cta" href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener" data-magnetic>
+      <span>Agende sua consulta</span>
+      <i class="btn__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </i>
+    </a>
+
+    <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══════════════ MENU MOBILE ═══════════════ -->
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Navegação mobile">
+    <a href="#a-face"><em>01</em> A FACE</a>
+    <a href="#profissionais"><em>02</em> Profissionais</a>
+    <a href="#especialidades"><em>03</em> Especialidades</a>
+    <a href="#confianca"><em>04</em> Depoimentos</a>
+    <a href="#duvidas"><em>05</em> Dúvidas</a>
+    <a href="#localizacao"><em>06</em> Localização</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener">Agende sua consulta no WhatsApp</a>
+    <a href="https://instagram.com/faceclinicaa" target="_blank" rel="noopener">@faceclinicaa</a>
+  </div>
+</div>
+
+<!-- ═══════════════ WHATSAPP FLUTUANTE ═══════════════ -->
+<a class="wa" id="wa" href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener" aria-label="Agende sua consulta pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.1 15.1l-.3-.18-3.08.88.9-3-.2-.31A8.1 8.1 0 0 1 12.04 3.8Zm4.66 10.2c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12s-.64.8-.79.97c-.14.16-.29.18-.54.06a6.6 6.6 0 0 1-1.95-1.2 7.3 7.3 0 0 1-1.35-1.68c-.14-.24 0-.37.11-.5.11-.11.25-.29.37-.44.12-.15.16-.25.24-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.17 1.71 2.6 4.14 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+  <span class="wa__label">Agende no WhatsApp</span>
+</a>
+
+<main id="main">
+
+<!-- ═══════════════ 01 · HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__media" data-parallax="0.16">
+    <video class="hero__video" src="assets/video/hero.mp4" poster="assets/img/hero-poster.webp"
+           autoplay muted loop playsinline preload="metadata"></video>
+    <span class="hero__scrim"></span>
+    <span class="hero__grain" aria-hidden="true"></span>
+  </div>
+
+  <div class="hero__content">
+    <span class="logo logo--hero" data-reveal role="img" aria-label="FACE Clínica"></span>
+
+    <span class="hero__rule" aria-hidden="true"></span>
+
+    <h1 class="hero__title" data-split>
+      Um protocolo único,<br>construído a partir da<br><em>sua individualidade</em>.
+    </h1>
+    <p class="hero__sub" data-reveal data-delay="0.18">
+      Odontologia estética, harmonização facial e ortodontia em Arcoverde.
+    </p>
+
+    <div class="hero__actions" data-reveal data-delay="0.25">
+      <a class="btn btn--solid" href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener" data-magnetic>
+        <span>Agende sua consulta</span>
+        <i class="btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
+      </a>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#a-face" aria-label="Rolar para o conteúdo">
+    <span class="hero__scroll-line"><i></i></span>
+  </a>
+</section>
+
+<!-- ═══════════════ 02 · MARQUEE ═══════════════ -->
+<div class="marquee">
+  <div class="marquee__track">
+    <div class="marquee__set">
+      <span>Odontologia Estética</span><i></i>
+      <span>Harmonização Facial</span><i></i>
+      <span>Ortodontia</span><i></i>
+      <span>Reabilitação Oral</span><i></i>
+    </div>
+    <div class="marquee__set" aria-hidden="true">
+      <span>Odontologia Estética</span><i></i>
+      <span>Harmonização Facial</span><i></i>
+      <span>Ortodontia</span><i></i>
+      <span>Reabilitação Oral</span><i></i>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 03 · A FACE ═══════════════ -->
+<section class="about" id="a-face">
+  <div class="wrap">
+    <p class="manifesto__text" data-split>
+      Um novo conceito. Crescemos, expandimos e unimos saúde, acolhimento e bem-estar
+      em um só lugar. Mas com o mesmo propósito: <em>sua melhor versão</em>.
+    </p>
+  </div>
+
+  <div class="wrap about__grid">
+    <figure class="about__media" data-reveal-img>
+      <img src="assets/img/about-equipe.webp" alt="Equipe da FACE Clínica" loading="lazy">
+    </figure>
+
+    <div class="about__body">
+      <p class="eyebrow" data-reveal>A FACE</p>
+      <h2 class="h2" data-split>Cuidado <em>integrado</em></h2>
+
+      <div class="about__copy" data-reveal data-delay="0.1">
+        <p>Na FACE, odontologia estética e harmonização facial caminham juntas em um
+          cuidado integrado.</p>
+        <p>Cada paciente recebe um protocolo único, construído a partir da sua
+          individualidade — com foco em equilíbrio, proporção e naturalidade.</p>
+        <p>O atendimento é exclusivo, detalhista e atencioso. Ninguém aqui é
+          atendido em série.</p>
+      </div>
+
+      <ul class="pillars" data-reveal data-delay="0.2">
+        <li><em>01</em>Protocolo único</li>
+        <li><em>02</em>Técnica e planejamento</li>
+        <li><em>03</em>Atendimento exclusivo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 04 · PROFISSIONAIS ═══════════════ -->
+<section class="team" id="profissionais">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="eyebrow" data-reveal>Quem cuida de você</p>
+        <h2 class="h2" data-split>Os <em>profissionais</em></h2>
+      </div>
+    </header>
+
+    <div class="team__grid">
+
+      <article class="doc">
+        <figure class="doc__photo" data-reveal-img><img src="assets/img/dr-wallid.webp" alt="Dr. Wallid Carlos, cirurgião-dentista, retrato de estúdio"></figure>
+        <div class="doc__body" data-reveal data-delay="0.1">
+          <h3 class="doc__name">Dr. Wallid Carlos</h3>
+          <p class="doc__role">Sócio · CRO-PE 13917<br>Odontologia Estética e Reabilitação Oral</p>
+          <p class="doc__bio">Com um olhar atento à estética e à precisão, o Dr. Wallid transforma
+            cada sorriso de forma única, unindo arte e técnica avançada para realçar a beleza
+            natural do paciente.</p>
+          <p class="doc__note">Ministra a Mentoria Estratifique, formação em facetas em resina
+            composta para cirurgiões-dentistas. Atende em Arcoverde e Recife.</p>
+        </div>
+      </article>
+
+      <article class="doc doc--reverse">
+        <figure class="doc__photo" data-reveal-img><img src="assets/img/dra-fernanda.webp" alt="Dra. Fernanda Brito, cirurgiã-dentista, retrato de estúdio"></figure>
+        <div class="doc__body" data-reveal data-delay="0.1">
+          <h3 class="doc__name">Dra. Fernanda Brito</h3>
+          <p class="doc__role">Sócia · Odontologia UFPE<br>CRO/PE 12294 · CRO/SP 145317 — Harmonização Facial</p>
+          <p class="doc__bio">Com vasta experiência em harmonização facial e rejuvenescimento,
+            a Dra. Fernanda trabalha o equilíbrio das proporções e os pontos de sustentação da
+            face, respeitando a anatomia e valorizando a beleza natural de cada paciente.</p>
+          <p class="doc__note">Criadora do método FB Lips e residente em HOF na Pròspere (SP).</p>
+        </div>
+      </article>
+
+      <article class="doc">
+        <figure class="doc__photo" data-reveal-img><img src="assets/img/dra-thayse.webp" alt="Dra. Thayse Pires, cirurgiã-dentista, retrato de estúdio"></figure>
+        <div class="doc__body" data-reveal data-delay="0.1">
+          <h3 class="doc__name">Dra. Thayse Pires</h3>
+          <!-- PENDENTE: confirmar CRO da Dra. Thayse com a clínica -->
+          <p class="doc__role">Ortodontista</p>
+          <p class="doc__bio">Com vasta experiência em casos ortodônticos complexos, a Dra. Thayse
+            entrega mais que tratamento: entrega confiança.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 05 · ESPECIALIDADES ═══════════════ -->
+<section class="spec" id="especialidades">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="eyebrow" data-reveal>O que fazemos</p>
+        <h2 class="h2" data-split>As <em>especialidades</em></h2>
+      </div>
+    </header>
+  </div>
+
+  <article class="spec__row">
+    <figure class="spec__media spec__media--tall" data-reveal-img>
+      <img src="assets/img/spec-odontologia.webp" alt="Atendimento de odontologia estética na FACE Clínica" loading="lazy">
+    </figure>
+    <div class="spec__body">
+      <span class="spec__n">01</span>
+      <h3 class="spec__title" data-split>Odontologia <em>Estética</em></h3>
+      <p class="spec__lead" data-reveal>Facetas e transformações de sorriso em resina composta,
+        feitas à mão livre. Mais do que mudar tons e formas, é criar equilíbrio, proporção e
+        naturalidade — respeitando a individualidade de cada sorriso.</p>
+      <ul class="spec__list" data-reveal data-delay="0.1">
+        <li>Facetas em resina composta</li>
+        <li>Substituição de resinas antigas</li>
+        <li>Clareamento dental</li>
+        <li>Acréscimos estratégicos em resina</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="spec__row spec__row--reverse">
+    <figure class="spec__media" data-reveal-img>
+      <img class="spec__img--low" src="assets/img/spec-harmonizacao.webp" alt="Procedimento de harmonização facial na FACE Clínica" loading="lazy">
+    </figure>
+    <div class="spec__body">
+      <span class="spec__n">02</span>
+      <h3 class="spec__title" data-split>Harmonização <em>Facial</em></h3>
+      <p class="spec__lead" data-reveal>A verdadeira beleza mora no equilíbrio, não no excesso.
+        Planejamentos personalizados que devolvem definição, contorno e sustentação à face —
+        sem excessos, apenas equilíbrio.</p>
+      <ul class="spec__list" data-reveal data-delay="0.1">
+        <li>Bioestimuladores de colágeno</li>
+        <li>Ácido hialurônico</li>
+        <li>Ultraformer MPT</li>
+        <li>Laser e rejuvenescimento facial</li>
+        <li>Preenchimento labial (FB Lips)</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="spec__row">
+    <figure class="spec__media" data-reveal-img>
+      <img src="assets/img/spec-implantes.webp" alt="Prótese dentária sendo avaliada em consultório" data-parallax="0.1">
+    </figure>
+    <div class="spec__body">
+      <span class="spec__n">03</span>
+      <h3 class="spec__title" data-split>Reabilitação <em>Oral</em></h3>
+      <p class="spec__lead" data-reveal>Reabilitação sobre implantes com atenção e responsabilidade
+        em cada etapa, devolvendo estética, função e segurança ao paciente.</p>
+    </div>
+  </article>
+
+  <article class="spec__row spec__row--reverse">
+    <figure class="spec__media" data-reveal-img>
+      <img src="assets/img/spec-ortodontia.webp" alt="Instrumentos de ortodontia em consultório da FACE Clínica" loading="lazy">
+    </figure>
+    <div class="spec__body">
+      <span class="spec__n">04</span>
+      <h3 class="spec__title" data-split><em>Ortodontia</em></h3>
+      <p class="spec__lead" data-reveal>Acompanhamento ortodôntico completo, incluindo casos
+        complexos, com planejamento individual e foco em resultado duradouro.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════ 06 · PROVA ═══════════════ -->
+<section class="proof" id="confianca">
+  <div class="wrap">
+    <div class="proof__facts" data-reveal-stagger>
+      <div class="proof__fact"><span class="proof__num">3</span><span class="proof__lab">Especialistas</span></div>
+      <div class="proof__fact"><span class="proof__num">4</span><span class="proof__lab">Especialidades no mesmo lugar</span></div>
+      <div class="proof__fact"><span class="proof__num">2</span><span class="proof__lab">Cidades · Arcoverde e Recife</span></div>
+    </div>
+
+    <header class="sec-head">
+      <div>
+        <p class="eyebrow" data-reveal>Quem já passou pela FACE</p>
+        <h2 class="h2" data-split>O que dizem os <em>pacientes</em></h2>
+      </div>
+    </header>
+
+    <!-- PENDENTE: substituir pelos depoimentos reais (Google/Instagram) e autorizar o uso do nome -->
+    <div class="proof__grid" data-reveal-stagger>
+      <figure class="quote">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <blockquote class="quote__text">Saí de lá com o sorriso que eu sempre quis e ninguém percebe que é resina. Ficou meu, só que melhor.</blockquote>
+        <figcaption class="quote__who">Paciente de facetas em resina</figcaption>
+      </figure>
+      <figure class="quote">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <blockquote class="quote__text">Eu tinha medo de ficar com cara artificial. Foi o contrário: continuo parecendo eu, descansada.</blockquote>
+        <figcaption class="quote__who">Paciente de harmonização facial</figcaption>
+      </figure>
+      <figure class="quote">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <blockquote class="quote__text">Explicaram cada etapa antes de começar. Nunca fui tratada com tanta atenção em consultório.</blockquote>
+        <figcaption class="quote__who">Paciente de ortodontia</figcaption>
+      </figure>
+    </div>
+
+    <p class="proof__src" data-reveal>Mais relatos e casos no nosso Instagram —
+      <a href="https://instagram.com/faceclinicaa" target="_blank" rel="noopener">@faceclinicaa</a>.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 07 · TECNOLOGIA ═══════════════ -->
+<section class="tech">
+  <div class="tech__media" data-parallax="0.2">
+    <!-- carrega só quando a faixa entra na tela (initLazyVideo) -->
+    <video class="tech__video" data-src="assets/video/tecnologia.mp4" poster="assets/img/tech-poster.webp"
+           muted loop playsinline preload="none"></video>
+    <span class="tech__scrim"></span>
+  </div>
+  <div class="tech__body">
+    <p class="eyebrow eyebrow--light" data-reveal>Tecnologia</p>
+    <h2 class="h2 h2--light" data-split>A excelência está<br>nos <em>detalhes</em>.</h2>
+    <p class="tech__lead" data-reveal data-delay="0.1">
+      Investimos em tecnologia para tornar cada tratamento mais preciso, confortável e
+      previsível. O scanner intraoral dispensa moldagens desconfortáveis e permite um
+      planejamento digital personalizado. O Ultraformer MPT e o laser ampliam as
+      possibilidades de rejuvenescimento com segurança.
+    </p>
+    <ul class="tech__list" data-reveal-stagger>
+      <li>Scanner intraoral</li>
+      <li>Ultraformer MPT</li>
+      <li>Laser</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ 08 · PERGUNTAS FREQUENTES ═══════════════ -->
+<section class="faq" id="duvidas">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="eyebrow" data-reveal>Antes de agendar</p>
+        <h2 class="h2" data-split>Perguntas <em>frequentes</em></h2>
+      </div>
+    </header>
+
+    <!-- PENDENTE: confirmar com a clínica valores, convênios, formas de pagamento e horário -->
+    <div class="faq__list" data-reveal>
+      <details class="faq__item">
+        <summary class="faq__q">Como funciona a primeira consulta?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>É uma avaliação completa: escutamos o que você quer mudar, examinamos sorriso e face,
+            registramos fotos e, quando necessário, o escaneamento digital. A partir disso montamos
+            um plano com etapas, tempo e investimento — sem compromisso de fechar na hora.</p>
+          <p>Dura cerca de 1 hora.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">Quanto tempo leva uma transformação de sorriso?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>As facetas em resina composta são feitas à mão livre, em geral em uma a duas sessões,
+            com retorno para ajustes e polimento. Casos que envolvem clareamento, ortodontia ou
+            reabilitação prévia seguem um cronograma próprio, definido na avaliação.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">Harmonização facial deixa o rosto artificial?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>Não é o nosso trabalho. Planejamos por proporção e sustentação, respeitando sua anatomia:
+            o objetivo é o rosto descansado e equilibrado, não um rosto diferente. Quando o pedido
+            do paciente ultrapassa o que a face comporta, dizemos isso na consulta.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">Vocês atendem convênio?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>O atendimento é particular. Emitimos recibo e a documentação necessária para
+            reembolso, quando o seu plano prevê essa possibilidade.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">Quais são os valores e formas de pagamento?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>Cada plano é individual, então o valor só é fechado depois da avaliação — é ela que
+            define quantas etapas o seu caso pede. Aceitamos pix, cartão e parcelamento;
+            as condições são apresentadas junto com o plano de tratamento.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">Sou de outra cidade. Dá para concentrar o tratamento?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>Sim. Recebemos pacientes de toda a região e organizamos as etapas em menos idas,
+            combinando horários em sequência. Fale com a gente no WhatsApp antes de viajar para
+            montarmos o roteiro.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">Preciso de algum preparo ou exame antes?<i aria-hidden="true"></i></summary>
+        <div class="faq__a">
+          <p>Para a avaliação, não. Se você já tem radiografias, documentação ortodôntica ou histórico
+            de procedimentos estéticos anteriores, traga: ajuda no planejamento. Informe também
+            medicamentos em uso e condições de saúde.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 09 · LOCALIZAÇÃO ═══════════════ -->
+<section class="loc" id="localizacao">
+  <div class="wrap loc__grid">
+    <div class="loc__body">
+      <p class="eyebrow" data-reveal>Onde estamos</p>
+      <h2 class="h2" data-split>Um espaço pensado<br>para <em>acolher</em>.</h2>
+
+      <p class="loc__lead" data-reveal data-delay="0.05">
+        Da recepção às salas de atendimento, cada ambiente da FACE foi projetado com
+        atenção à luz, ao silêncio e à privacidade — para que você tenha tempo e
+        tranquilidade para falar sobre o que deseja mudar.
+      </p>
+
+      <address class="loc__addr" data-reveal data-delay="0.1">
+        Rua Maria José dos Santos Moreno, 17<br>
+        Centro — Arcoverde/PE · CEP 56505-025<br>
+        <span class="loc__ref">Em frente à Escola Carlos Rios</span>
+      </address>
+
+      <!-- PENDENTE: confirmar horário real com a clínica -->
+      <dl class="loc__hours" data-reveal data-delay="0.15">
+        <div><dt>Segunda a sexta</dt><dd>08h às 18h</dd></div>
+        <div><dt>Sábado</dt><dd>Sob agendamento</dd></div>
+        <div><dt>Atendimento</dt><dd>Somente com hora marcada</dd></div>
+      </dl>
+
+      <div class="loc__actions" data-reveal data-delay="0.2">
+        <a class="btn btn--solid" href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener" data-magnetic>
+          <span>Agende sua consulta</span>
+          <i class="btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
+        </a>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Rua+Maria+Jos%C3%A9+dos+Santos+Moreno,+17+-+Centro,+Arcoverde+-+PE,+56505-025" target="_blank" rel="noopener"><span>Traçar rota</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="loc__map">
+    <iframe
+      title="Mapa com a localização da FACE Clínica"
+      src="https://www.google.com/maps?q=Rua%20Maria%20Jos%C3%A9%20dos%20Santos%20Moreno%2C%2017%20-%20Centro%2C%20Arcoverde%20-%20PE%2C%2056505-025&output=embed"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- ═══════════════ 10 · AGENDAMENTO ═══════════════ -->
+<section class="cta" id="agendar">
+  <div class="cta__body">
+    <h2 class="h2 h2--light h2--center" data-split>Sua melhor versão começa<br>com uma <em>conversa</em>.</h2>
+
+    <a class="btn btn--light btn--big" href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener" data-magnetic>
+      <span>Agende sua consulta</span>
+      <i class="btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
+    </a>
+
+    <a class="cta__ig" href="https://instagram.com/faceclinicaa" target="_blank" rel="noopener">@faceclinicaa</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ RODAPÉ ═══════════════ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <a class="foot__brand" href="#hero">
+        <span class="logo" role="img" aria-label="FACE Clínica"></span>
+      </a>
+
+      <div class="foot__col">
+        <h3>Endereço</h3>
+        <p>Rua Maria José dos Santos Moreno, 17<br>Centro — Arcoverde/PE<br>CEP 56505-025</p>
+      </div>
+
+      <div class="foot__col">
+        <h3>Contato</h3>
+        <p>
+          <a href="https://wa.me/message/FDXDA3NE57FGO1" target="_blank" rel="noopener">WhatsApp</a><br>
+          <a href="https://instagram.com/faceclinicaa" target="_blank" rel="noopener">@faceclinicaa</a>
+        </p>
+        <!-- PENDENTE: e-mail comercial e telefone em formato aberto -->
+      </div>
+
+      <div class="foot__col">
+        <h3>Responsáveis</h3>
+        <p>Dr. Wallid Carlos — CRO-PE 13917<br>
+           Dra. Fernanda Brito — CRO/PE 12294 · CRO/SP 145317<br>
+           Dra. Thayse Pires — Ortodontia</p>
+        <!-- PENDENTE: CRO da Dra. Thayse -->
+        <p class="foot__rt">Responsável técnico: Dr. Wallid Carlos — CRO-PE 13917</p>
+      </div>
+    </div>
+
+    <div class="foot__bottom">
+      <p class="foot__legal">
+        Este site tem caráter informativo e não substitui a avaliação profissional presencial.
+        Nenhum conteúdo aqui constitui promessa ou garantia de resultado.
+      </p>
+      <p class="foot__legal">© <span id="year">2026</span> FACE Clínica. Arcoverde, Pernambuco.</p>
+    </div>
+  </div>
+
+  <span class="foot__giant" aria-hidden="true"></span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+/* ==========================================================================
+   FACE CLÍNICA — motion & interaction
+   GSAP + ScrollTrigger (+ Lenis opcional). Tudo degrada com elegância:
+   se um CDN falhar ou o usuário pedir menos movimento, o site continua inteiro.
+   ========================================================================== */
+
+const REDUCED  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const HAS_GSAP = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+const ANIMATE  = HAS_GSAP && !REDUCED;
+
+if (HAS_GSAP) gsap.registerPlugin(ScrollTrigger);
+
+/* Sinaliza para a rede de segurança do <head> que o JS assumiu o controle.
+   Sem GSAP (CDN bloqueado, offline) não há quem anime os estados iniciais,
+   então eles são descartados na hora — o site renderiza estático e completo. */
+window.__fcReady = true;
+if (!ANIMATE) document.documentElement.classList.remove('js-anim');
+
+/* ==========================================================================
+   1 · SMOOTH SCROLL (opcional — Lenis)
+   ========================================================================== */
+let lenis = null;
+function initSmoothScroll () {
+  if (!ANIMATE || typeof window.Lenis === 'undefined') return;
+
+  lenis = new Lenis({ duration: 1.05, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.documentElement.style.scrollBehavior = 'auto';
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const id = a.getAttribute('href');
+    if (id.length < 2) return;
+    a.addEventListener('click', e => {
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      closeMenu();
+      lenis.scrollTo(target, { offset: -80 });
+    });
+  });
+}
+
+/* ==========================================================================
+   2 · SPLIT — máscara por palavra
+   Preserva <em>, <br> e elementos inline; só quebra nós de texto.
+   ========================================================================== */
+function splitWords (el) {
+  if (el.dataset.splitDone) return el.querySelectorAll('.split__inner');
+
+  const nodes = [];
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    if (!node.nodeValue.trim()) return;
+    const frag = document.createDocumentFragment();
+    node.nodeValue.split(/(\s+)/).forEach(tok => {
+      if (!tok) return;
+      if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(tok)); return; }
+      const mask  = document.createElement('span'); mask.className  = 'split__line';
+      const inner = document.createElement('span'); inner.className = 'split__inner';
+      inner.textContent = tok;
+      mask.appendChild(inner);
+      frag.appendChild(mask);
+    });
+    node.parentNode.replaceChild(frag, node);
+  });
+
+  el.dataset.splitDone = '1';
+  return el.querySelectorAll('.split__inner');
+}
+
+/* ==========================================================================
+   3 · PRELOADER
+   ========================================================================== */
+function initPreloader (onDone) {
+  const pre     = document.getElementById('preloader');
+  const bar     = pre.querySelector('.preloader__bar i');
+  const mark    = pre.querySelector('.logo');
+  const curtain = pre.querySelector('.preloader__curtain');
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    document.body.classList.remove('is-loading');
+    document.body.classList.add('loaded');
+    pre.remove();
+    onDone && onDone();
+  };
+
+  if (!ANIMATE) { finish(); return; }
+
+  /* Se a aba abrir em segundo plano o rAF congela e a timeline não completa.
+     O teto de 4s garante que ninguém fica preso na tela de carregamento. */
+  setTimeout(finish, 4000);
+
+  gsap.timeline({ onComplete: finish })
+    .to(bar, { width: '100%', duration: 1.05, ease: 'power2.inOut' })
+    .to([mark, bar.parentNode], { opacity: 0, y: -14, duration: .4, ease: 'power2.in' }, '-=0.1')
+    .set(curtain, { transformOrigin: 'bottom' })
+    .to(curtain, { scaleY: 1, duration: .5, ease: 'power3.inOut' })
+    .set(pre, { backgroundColor: 'transparent' })
+    .to(curtain, { scaleY: 0, transformOrigin: 'top', duration: .65, ease: 'power3.inOut' });
+}
+
+/* ==========================================================================
+   4 · HERO — entrada
+   ========================================================================== */
+function initHero () {
+  if (!ANIMATE) return;
+
+  const words = splitWords(document.querySelector('.hero__title'));
+
+  gsap.timeline({ defaults: { ease: 'expo.out' } })
+    .from('.hero__media', { scale: 1.13, duration: 1.8, ease: 'power3.out' }, 0)
+    .to(words, { y: '0%', duration: 1.25, stagger: 0.05 }, 0.28)
+    .to('.logo--hero', { opacity: 1, y: 0, duration: 1.1 }, 0.1)
+    .to('.hero__sub, .hero__actions', { opacity: 1, y: 0, duration: .9, stagger: .09 }, 0.55)
+    .from('.hero__scroll', { opacity: 0, y: 18, duration: .8 }, 0.8);
+}
+
+/* ==========================================================================
+   5 · REVEALS DE SCROLL
+   ========================================================================== */
+function initReveals () {
+  if (!ANIMATE) return;
+
+  /* títulos com máscara por palavra */
+  document.querySelectorAll('[data-split]').forEach(el => {
+    if (el.closest('.hero')) return;
+    gsap.to(splitWords(el), {
+      y: '0%', duration: 1.05, ease: 'expo.out', stagger: 0.032,
+      scrollTrigger: { trigger: el, start: 'top 86%' }
+    });
+  });
+
+  /* blocos simples */
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    if (el.closest('.hero')) return;
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: .95, ease: 'expo.out',
+      delay: parseFloat(el.dataset.delay || 0),
+      scrollTrigger: { trigger: el, start: 'top 90%' }
+    });
+  });
+
+  /* listas / grids em cascata */
+  document.querySelectorAll('[data-reveal-stagger]').forEach(group => {
+    gsap.to(group.children, {
+      opacity: 1, y: 0, duration: .9, ease: 'expo.out', stagger: 0.075,
+      scrollTrigger: { trigger: group, start: 'top 88%' }
+    });
+  });
+
+  /* imagens com revelação por clip-path */
+  document.querySelectorAll('[data-reveal-img]').forEach(el => {
+    gsap.to(el, {
+      clipPath: 'inset(0 0 0% 0)', duration: 1.3, ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' }
+    });
+  });
+}
+
+/* ==========================================================================
+   6 · PARALLAX
+   ========================================================================== */
+function initLazyVideo () {
+  const vids = document.querySelectorAll('video[data-src]');
+  if (!vids.length) return;
+  const load = v => { if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; v.play().catch(()=>{}); } };
+  if (!('IntersectionObserver' in window)) { vids.forEach(load); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '300px' });
+  vids.forEach(v => io.observe(v));
+}
+initLazyVideo();
+
+function initParallax () {
+  if (!ANIMATE) return;
+  document.querySelectorAll('[data-parallax]').forEach(el => {
+    const f = parseFloat(el.dataset.parallax) || 0.1;
+    gsap.fromTo(el,
+      { yPercent: -f * 50 },
+      {
+        yPercent: f * 50, ease: 'none',
+        scrollTrigger: {
+          trigger: el.closest('section, figure, .tech, .cta, .hero') || el,
+          start: 'top bottom', end: 'bottom top', scrub: true
+        }
+      }
+    );
+  });
+}
+
+/* ==========================================================================
+   7 · NAV — sticky, auto-hide, menu mobile
+   ========================================================================== */
+const nav    = document.getElementById('nav');
+const menu   = document.getElementById('menu');
+const burger = document.getElementById('burger');
+let menuOpen = false;
+
+function openMenu () {
+  menuOpen = true;
+  menu.hidden = false;
+  document.body.classList.add('menu-open');
+  burger.setAttribute('aria-expanded', 'true');
+  burger.setAttribute('aria-label', 'Fechar menu');
+  lenis && lenis.stop();
+
+  if (ANIMATE) {
+    gsap.to(menu, { clipPath: 'inset(0 0 0% 0)', duration: .8, ease: 'expo.out' });
+    gsap.from(menu.querySelectorAll('.menu__nav a'), { y: 34, opacity: 0, duration: .7, stagger: .06, ease: 'expo.out', delay: .12 });
+  } else {
+    menu.style.clipPath = 'none';
+  }
+  menu.querySelector('a').focus({ preventScroll: true });
+}
+
+function closeMenu () {
+  if (!menuOpen) return;
+  menuOpen = false;
+  document.body.classList.remove('menu-open');
+  burger.setAttribute('aria-expanded', 'false');
+  burger.setAttribute('aria-label', 'Abrir menu');
+  lenis && lenis.start();
+
+  const hide = () => { menu.hidden = true; };
+  if (ANIMATE) gsap.to(menu, { clipPath: 'inset(0 0 100% 0)', duration: .5, ease: 'expo.in', onComplete: hide });
+  else hide();
+}
+
+function initNav () {
+  burger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menuOpen) { closeMenu(); burger.focus(); }
+  });
+
+  let last = 0;
+  const onScroll = () => {
+    const y = window.scrollY;
+    const overHero = y < window.innerHeight * 0.72;
+    nav.classList.toggle('is-stuck', y > 40);
+    nav.classList.toggle('is-hidden', !menuOpen && (overHero || (y > 400 && y > last)));
+    updateFloatingCta(y);
+    last = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ==========================================================================
+   8 · WHATSAPP FLUTUANTE — entra depois do hero
+   O estado escondido é uma classe CSS, não um tween: este é o CTA único do
+   site, então ele precisa aparecer mesmo se o GSAP não carregar. A visibilidade
+   é controlada pelo mesmo listener de scroll da nav — sem ScrollTrigger, que
+   dessincroniza quando o Lenis assume a rolagem.
+   ========================================================================== */
+function updateFloatingCta (y) {
+  document.getElementById('wa').classList.toggle('is-off', y < window.innerHeight * 0.8);
+}
+
+/* ==========================================================================
+   9 · CURSOR + BOTÕES MAGNÉTICOS
+   ========================================================================== */
+const FINE = () => window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+function initCursor () {
+  if (!FINE() || !ANIMATE) return;
+
+  const cur   = document.getElementById('cursor');
+  const dot   = cur.querySelector('.cursor__dot');
+  const ring  = cur.querySelector('.cursor__ring');
+  const label = cur.querySelector('.cursor__label');
+
+  const dx = gsap.quickTo(dot,  'x', { duration: .18, ease: 'power3' });
+  const dy = gsap.quickTo(dot,  'y', { duration: .18, ease: 'power3' });
+  const rx = gsap.quickTo(ring, 'x', { duration: .55, ease: 'power3' });
+  const ry = gsap.quickTo(ring, 'y', { duration: .55, ease: 'power3' });
+
+  window.addEventListener('mousemove', e => {
+    gsap.to(cur, { opacity: 1, duration: .3, overwrite: 'auto' });
+    dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => gsap.to(cur, { opacity: 0, duration: .25 }));
+
+  document.querySelectorAll('a, button, [data-cursor]').forEach(el => {
+    const txt = el.dataset.cursor;
+    el.addEventListener('mouseenter', () => {
+      cur.classList.add(txt ? 'is-label' : 'is-hover');
+      if (txt) label.textContent = txt;
+    });
+    el.addEventListener('mouseleave', () => {
+      cur.classList.remove('is-hover', 'is-label');
+      label.textContent = '';
+    });
+  });
+}
+
+function initMagnetic () {
+  if (!ANIMATE || !FINE()) return;
+
+  document.querySelectorAll('[data-magnetic]').forEach(el => {
+    const strength = 0.3;
+    const setX = gsap.quickTo(el, 'x', { duration: .5, ease: 'power3' });
+    const setY = gsap.quickTo(el, 'y', { duration: .5, ease: 'power3' });
+
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      setX((e.clientX - (r.left + r.width / 2)) * strength);
+      setY((e.clientY - (r.top + r.height / 2)) * strength);
+    });
+    const reset = () => { setX(0); setY(0); };
+    el.addEventListener('mouseleave', reset);
+    el.addEventListener('blur', reset);
+  });
+}
+
+/* ==========================================================================
+   10 · BOOT
+   ========================================================================== */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+initNav();
+
+initPreloader(() => {
+  initSmoothScroll();
+  initHero();
+  initReveals();
+  initParallax();
+  initCursor();
+  initMagnetic();
+  if (HAS_GSAP) ScrollTrigger.refresh();
+});
+
+/* recalcula depois que fontes e imagens assentam */
+window.addEventListener('load', () => { if (HAS_GSAP) ScrollTrigger.refresh(); });
+if (document.fonts) document.fonts.ready.then(() => { if (HAS_GSAP) ScrollTrigger.refresh(); });
+
+</script>
+</body>
+</html>
